@@ -21,20 +21,27 @@ const Contact = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
     
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    const emailBody = `
+Nom: ${formData.name}
+Email: ${formData.email}
+Téléphone: ${formData.phone}
+Sujet: ${formData.subject}
+
+Message:
+${formData.message}
+    `.trim();
+    
+    const mailtoLink = `mailto:contact@batiment-rh.fr?subject=${encodeURIComponent(`Demande de devis - ${formData.subject}`)}&body=${encodeURIComponent(emailBody)}`;
+    
+    window.location.href = mailtoLink;
     
     toast({
-      title: "Message envoyé !",
-      description: "Nous vous répondrons dans les plus brefs délais.",
+      title: "Redirection vers votre messagerie",
+      description: "Votre client email va s'ouvrir pour envoyer le message.",
     });
-    
-    setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
-    setIsSubmitting(false);
   };
 
   const contactInfo = [
