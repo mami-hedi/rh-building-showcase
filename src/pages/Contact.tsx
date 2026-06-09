@@ -34,7 +34,7 @@ Message:
 ${formData.message}
     `.trim();
     
-    const mailtoLink = `mailto:contact@batiment-rh.fr?subject=${encodeURIComponent(`Demande de devis - ${formData.subject}`)}&body=${encodeURIComponent(emailBody)}`;
+    const mailtoLink = `mailto:entgbrh@gmail.com?subject=${encodeURIComponent(`Demande de devis - ${formData.subject}`)}&body=${encodeURIComponent(emailBody)}`;
     
     window.location.href = mailtoLink;
     
@@ -48,25 +48,25 @@ ${formData.message}
     {
       icon: Phone,
       title: "Téléphone",
-      content: "01 23 45 67 89",
-      link: "tel:+33123456789",
+      content: "98 30 89 69",
+      link: "tel:+21698308969",
     },
     {
       icon: Mail,
       title: "Email",
-      content: "contact@batiment-rh.fr",
-      link: "mailto:contact@batiment-rh.fr",
+      content: "entgbrh@gmail.com",
+      link: "mailto:entgbrh@gmail.com",
     },
     {
       icon: MapPin,
       title: "Adresse",
-      content: "123 Avenue du Bâtiment, 75001 Paris",
+      content: "Avenue des Nations Unies  Hammamet - 8050",
       link: "https://maps.google.com",
     },
     {
       icon: Clock,
       title: "Horaires",
-      content: "Lun-Ven: 8h-18h",
+      content: "Lun-Samedi: 8h-17h",
       link: null,
     },
   ];
