@@ -52,6 +52,12 @@ ${formData.message}
       link: "tel:+21698308969",
     },
     {
+      icon: Phone, // Vous pouvez remplacer par MessageSquare ou une icône WhatsApp si disponible
+      title: "WhatsApp",
+      content: "55 30 81 16",
+      link: "https://wa.me/21655308116",
+    },
+    {
       icon: Mail,
       title: "Email",
       content: "entgbrh@gmail.com",
@@ -60,13 +66,13 @@ ${formData.message}
     {
       icon: MapPin,
       title: "Adresse",
-      content: "Avenue des Nations Unies  Hammamet - 8050",
-      link: "https://maps.google.com",
+      content: "Avenue des Nations Unies, Hammamet - 8050",
+      link: "https://www.google.com/maps/search/?api=1&query=Avenue+des+Nations+Unies+Hammamet+8050",
     },
     {
       icon: Clock,
       title: "Horaires",
-      content: "Lun-Samedi: 8h-17h",
+      content: "Lun-Ven: 8h-18h",
       link: null,
     },
   ];
@@ -125,9 +131,17 @@ ${formData.message}
               </div>
 
               {/* Map placeholder */}
-              <div className="mt-8 bg-muted rounded-xl h-48 flex items-center justify-center">
-                <MapPin className="w-12 h-12 text-muted-foreground/50" />
-              </div>
+              <a 
+  href="https://www.google.com/maps/search/?api=1&query=Avenue+des+Nations+Unies,+Hammamet+8050" 
+  target="_blank" 
+  rel="noopener noreferrer"
+  className="mt-8 block bg-accent/10 hover:bg-accent/20 transition-colors rounded-xl h-48 flex items-center justify-center border-2 border-dashed border-accent/30"
+>
+  <div className="flex flex-col items-center gap-2">
+    <MapPin className="w-12 h-12 text-accent" />
+    <span className="font-medium text-accent">Voir sur Google Maps</span>
+  </div>
+</a>
             </div>
 
             {/* Contact Form */}
@@ -257,10 +271,6 @@ ${formData.message}
               {
                 question: "Comment obtenir un devis ?",
                 answer: "Remplissez le formulaire ci-dessus ou appelez-nous directement. Nous vous répondrons sous 24h avec une première estimation.",
-              },
-              {
-                question: "Intervenez-vous en dehors de Paris ?",
-                answer: "Oui, nous intervenons dans toute l'Île-de-France et les régions limitrophes pour les projets d'envergure.",
               },
               {
                 question: "Quels sont vos délais d'intervention ?",
