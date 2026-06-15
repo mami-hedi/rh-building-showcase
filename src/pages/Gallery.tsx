@@ -3,65 +3,76 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, X } from "lucide-react";
 import Layout from "@/components/Layout";
-import projectResidential from "@/assets/project-residential.jpg";
-import projectCommercial from "@/assets/project-commercial.jpg";
-import projectRenovation from "@/assets/project-renovation.jpg";
-import projectIndustrial from "@/assets/project-industrial.jpg";
+import GenieCivilPlancher from "@/assets/Genie-Civil-Plancher.jpg";
+import GenieCivilPlancher1 from "@/assets/Genie-Civil-Plancher-1.jpg";
+import jardinetpiscine from "@/assets/jardinetpiscine.jpg";
+import jardinetpiscine1 from "@/assets/jardinetpiscine1.jpg";
+import stylearabe from "@/assets/Style-Arabe.jpg";
+import renovationPiscine from "@/assets/renovationPiscine.jpg";
+import renovationPiscine1 from "@/assets/renovationpiscine1.jpg";
+import Arcature from "@/assets/Arcature.jpg";
+import Arcature1 from "@/assets/arcature1.jpeg";
 
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [activeCategory, setActiveCategory] = useState("Tous");
 
-  const categories = ["Tous", "Résidentiel", "Commercial", "Rénovation", "Industriel"];
+  const categories = ["Tous", "Arcature", "Jardin & Pisicne", "Travaux de plancher", "Style Arabe","Renovation Piscine"];
 
   const projects = [
     {
-      image: projectResidential,
-      title: "Résidence Les Jardins",
-      category: "Résidentiel",
-      description: "Ensemble résidentiel de 45 appartements",
+      image: jardinetpiscine,
+      title: "Jardin & Pisicne",
+      category: "Jardin & Pisicne",
+      
     },
     {
-      image: projectCommercial,
-      title: "Tour Horizon",
-      category: "Commercial",
-      description: "Immeuble de bureaux de 15 000 m²",
+      image: jardinetpiscine1,
+      title: "Jardin & Pisicne",
+      category: "Jardin & Pisicne",
+      
     },
     {
-      image: projectRenovation,
-      title: "Villa Moderne",
-      category: "Rénovation",
-      description: "Rénovation complète d'une villa des années 70",
+      image: GenieCivilPlancher,
+      title: "Travaux de plancher",
+      category: "Travaux de plancher",
+      
     },
     {
-      image: projectIndustrial,
-      title: "Entrepôt Logistique",
-      category: "Industriel",
-      description: "Centre logistique de 25 000 m²",
+      image: GenieCivilPlancher1,
+      title: "Travaux de plancher",
+      category: "Travaux de plancher",
+      
     },
     {
-      image: projectResidential,
-      title: "Les Terrasses du Parc",
-      category: "Résidentiel",
-      description: "Programme immobilier de standing",
+      image: stylearabe,
+      title: "Style Arabe",
+      category: "Style Arabe",
+      
     },
     {
-      image: projectCommercial,
-      title: "Centre Commercial Étoile",
-      category: "Commercial",
-      description: "Extension et modernisation",
+      image: renovationPiscine,
+      title: "Renovation Piscine",
+      category: "Renovation Piscine",
+      
     },
     {
-      image: projectRenovation,
-      title: "Maison de Maître",
-      category: "Rénovation",
-      description: "Restauration patrimoniale",
+      image: renovationPiscine1,
+      title: "Renovation Piscine",
+      category: "Renovation Piscine",
+      
     },
     {
-      image: projectIndustrial,
-      title: "Usine Agroalimentaire",
-      category: "Industriel",
-      description: "Construction aux normes HACCP",
+      image: Arcature,
+      title: "Arcature",
+      category: "Arcature",
+      
+    },
+    {
+      image: Arcature1,
+      title: "Arcature",
+      category: "Arcature",
+      
     },
   ];
 
@@ -89,25 +100,25 @@ const Gallery = () => {
       </section>
 
       {/* Filter */}
-      <section className="py-8 bg-background border-b border-border sticky top-20 z-40">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-wrap gap-3 justify-center">
-            {categories.map((category) => (
-              <button
-                key={category}
-                onClick={() => setActiveCategory(category)}
-                className={`px-6 py-2 rounded-full font-medium transition-all duration-300 ${
-                  activeCategory === category
-                    ? "accent-gradient text-accent-foreground"
-                    : "bg-muted text-muted-foreground hover:bg-muted/80"
-                }`}
-              >
-                {category}
-              </button>
-            ))}
-          </div>
-        </div>
-      </section>
+<section className="py-8 bg-background border-b border-border static md:sticky top-20 z-40">
+  <div className="container mx-auto px-4">
+    <div className="flex flex-wrap gap-3 justify-center">
+      {categories.map((category) => (
+        <button
+          key={category}
+          onClick={() => setActiveCategory(category)}
+          className={`px-6 py-2 rounded-full font-medium transition-all duration-300 ${
+            activeCategory === category
+              ? "accent-gradient text-accent-foreground"
+              : "bg-muted text-muted-foreground hover:bg-muted/80"
+          }`}
+        >
+          {category}
+        </button>
+      ))}
+    </div>
+  </div>
+</section>
 
       {/* Gallery Grid */}
       <section className="py-16 bg-background">
