@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { Phone, Mail, MapPin } from "lucide-react";
+import { Phone, Mail, MapPin, MessageCircle } from "lucide-react";
+
 
 const Footer = () => {
   return (
@@ -66,21 +67,39 @@ const Footer = () => {
             <h3 className="font-heading font-bold text-lg mb-6">Contact</h3>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
-                <span className="text-primary-foreground/80">
-                  123 Avenue du Bâtiment<br />75001 Paris, France
-                </span>
-              </li>
+  <MapPin className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+  <a 
+    href="https://www.google.com/maps/search/?api=1&query=Avenue+des+Nations+Unies,+Hammamet+8050" 
+    target="_blank" 
+    rel="noopener noreferrer"
+    className="text-primary-foreground/80 hover:text-accent transition-colors"
+  >
+    Avenue des Nations Unies, Hammamet - 8050
+  </a>
+</li>
               <li className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-accent flex-shrink-0" />
-                <a href="tel:+33123456789" className="text-primary-foreground/80 hover:text-accent transition-colors">
-                  01 23 45 67 89
+                <a href="tel:+21698308969" className="text-primary-foreground/80 hover:text-accent transition-colors">
+                  98 30 89 69
                 </a>
               </li>
               <li className="flex items-center gap-3">
+  {/* Remplacement de text-green-500 par text-accent pour l'icône */}
+  <MessageCircle className="w-5 h-5 text-accent flex-shrink-0" />
+  <a 
+    href="https://wa.me/21655308116" 
+    target="_blank" 
+    rel="noopener noreferrer"
+    /* Remplacement de text-green-500 par text-accent dans le hover */
+    className="text-primary-foreground/80 hover:text-accent transition-colors"
+  >
+    WhatsApp: 55 30 81 16
+  </a>
+</li>
+              <li className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-accent flex-shrink-0" />
-                <a href="mailto:contact@batiment-rh.fr" className="text-primary-foreground/80 hover:text-accent transition-colors">
-                  contact@batiment-rh.fr
+                <a href="mailto:entgbrh@gmail.com" className="text-primary-foreground/80 hover:text-accent transition-colors">
+                  entgbrh@gmail.com
                 </a>
               </li>
             </ul>
