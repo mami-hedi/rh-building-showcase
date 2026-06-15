@@ -3,9 +3,9 @@ import { Button } from "@/components/ui/button";
 import { Building2, Hammer, PaintBucket, Home, Wrench, HardHat, ArrowRight, CheckCircle, Phone } from "lucide-react";
 import Layout from "@/components/Layout";
 import heroImage from "@/assets/hero-construction.jpg";
-import projectResidential from "@/assets/project-residential.jpg";
-import projectCommercial from "@/assets/project-commercial.jpg";
-import projectRenovation from "@/assets/project-renovation.jpg";
+import jardinetpiscine from "@/assets/jardinetpiscine.jpg";
+import renovationPiscine from "@/assets/renovationPiscine.jpg";
+import GenieCivilPlancher1 from "@/assets/Genie-Civil-Plancher-1.jpg";
 
 const Index = () => {
   const services = [
@@ -49,9 +49,9 @@ const Index = () => {
   ];
 
   const projects = [
-    { image: projectResidential, title: "Résidence Les Jardins", category: "Résidentiel" },
-    { image: projectCommercial, title: "Tour Horizon", category: "Commercial" },
-    { image: projectRenovation, title: "Villa Moderne", category: "Rénovation" },
+    { image: jardinetpiscine, title: "Jardin & piscine"},
+    { image: renovationPiscine, title: "Renovation Piscine"},
+    { image: GenieCivilPlancher1, title: "Plancher"}
   ];
 
   return (
@@ -188,7 +188,7 @@ const Index = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                  <span className="text-accent text-sm font-medium">{project.category}</span>
+                  
                   <h3 className="text-xl font-heading font-bold text-primary-foreground">
                     {project.title}
                   </h3>
@@ -245,7 +245,7 @@ const Index = () => {
 
             <div className="relative">
               <img
-                src={projectCommercial}
+                src={renovationPiscine}
                 alt="Notre expertise"
                 className="rounded-xl shadow-2xl"
               />
@@ -256,7 +256,7 @@ const Index = () => {
                   </div>
                   <div>
                     <p className="text-sm text-muted-foreground">Appelez-nous</p>
-                    <p className="text-xl font-heading font-bold text-foreground">01 23 45 67 89</p>
+                    <p className="text-xl font-heading font-bold text-foreground">98 30 89 69</p>
                   </div>
                 </div>
               </div>
