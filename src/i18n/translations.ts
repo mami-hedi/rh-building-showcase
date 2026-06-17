@@ -104,7 +104,7 @@ export const translations = {
       button: "Demander un devis gratuit",
     },
     footer: {
-      description: "Votre partenaire de confiance pour tous vos projets de construction et de rénovation depuis plus de 20 ans.",
+      description: "Votre partenaire de confiance pour tous vos projets de construction et de rénovation.",
       navigation: "Navigation",
       our_services: "Nos Services",
       contact: "Contact",
@@ -243,7 +243,7 @@ export const translations = {
       button: "Request a free quote",
     },
     footer: {
-      description: "Your trusted partner for all construction and renovation projects for over 20 years.",
+      description: "Your trusted partner for all construction and renovation projects.",
       navigation: "Navigation",
       our_services: "Our Services",
       contact: "Contact",
