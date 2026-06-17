@@ -28,7 +28,7 @@ const Index = () => {
 
   const stats = [
     { value: "20+", label: t.stats.experience },
-    { value: "500+", label: t.stats.projects },
+    { value: "100+", label: t.stats.projects },
     { value: "50+", label: t.stats.professionals },
     { value: "100%", label: t.stats.satisfaction },
   ];
