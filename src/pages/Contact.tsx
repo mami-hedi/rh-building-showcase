@@ -156,7 +156,7 @@ ${formData.message}
 </div>
 
             {/* Contact Form */}
-            <div className="lg:col-span-2">
+            <div className="lg:col-span-2" id="devis">
               <div className="bg-card rounded-xl p-8 card-shadow border border-border">
                 <h2 className="text-2xl font-heading font-bold text-foreground mb-2">
                   Demande de devis gratuit

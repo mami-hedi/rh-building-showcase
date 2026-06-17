@@ -63,7 +63,7 @@ const Header = () => {
               <span className="font-medium">98 30 89 69</span>
             </a>
             <Button variant="accent" asChild>
-              <Link to="/contact">Devis Gratuit</Link>
+              <Link to="/contact/#devis">Devis Gratuit</Link>
             </Button>
           </div>
 
@@ -109,7 +109,7 @@ const Header = () => {
         </a>
         
         <Button variant="accent" className="w-full" asChild>
-          <Link to="/contact" onClick={() => setIsMenuOpen(false)}>
+          <Link to="/contact/#devis" onClick={() => setIsMenuOpen(false)}>
             Devis Gratuit
           </Link>
         </Button>

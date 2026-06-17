@@ -283,7 +283,7 @@ const Index = () => {
       className="md:scale-110 w-full sm:w-auto max-w-full h-auto py-3 px-4 sm:px-6 inline-flex items-center justify-center whitespace-normal text-center" 
       asChild
     >
-      <Link to="/contact">
+      <Link to="/contact/#devis">
         {/* Le texte passe à la ligne proprement sur les très petits écrans si nécessaire */}
         <span className="text-sm sm:text-base md:text-lg font-semibold break-words">
           Demander un devis gratuit

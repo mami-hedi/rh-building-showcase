@@ -178,21 +178,30 @@ const Gallery = () => {
 
       {/* CTA Section */}
       <section className="py-20 bg-muted">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-4">
-            Vous avez un projet similaire ?
-          </h2>
-          <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Contactez-nous pour discuter de votre projet. Nous vous accompagnerons de A à Z.
-          </p>
-          <Button variant="accent" size="xl" asChild>
-            <Link to="/contact">
-              Demander un devis gratuit
-              <ArrowRight className="ml-2 w-5 h-5" />
-            </Link>
-          </Button>
-        </div>
-      </section>
+  <div className="container mx-auto px-4 text-center">
+    <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-4">
+      Vous avez un projet similaire ?
+    </h2>
+    <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+      Contactez-nous pour discuter de votre projet. Nous vous accompagnerons de A à Z.
+    </p>
+    
+    {/* Harmonisation de la taille et sécurité anti-débordement mobile */}
+    <Button 
+      variant="accent" 
+      size="lg" 
+      className="md:scale-110 w-full sm:w-auto max-w-full h-auto py-3 px-4 sm:px-6 inline-flex items-center justify-center whitespace-normal text-center" 
+      asChild
+    >
+      <Link to="/contact/#devis">
+        <span className="text-sm sm:text-base md:text-lg font-semibold break-words">
+          Demander un devis gratuit
+        </span>
+        <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
+      </Link>
+    </Button>
+  </div>
+</section>
     </Layout>
   );
 };
