@@ -8,7 +8,7 @@ import Layout from "@/components/Layout";
 import { useLanguage } from "../i18n/LanguageContext";
 import emailjs from "@emailjs/browser";
 
-const EMAILJS_SERVICE_ID  = "service_18v9ua3";
+const EMAILJS_SERVICE_ID  = "service_387qb6z";
 const EMAILJS_TEMPLATE_ID = "template_yq9bgbs";
 const EMAILJS_PUBLIC_KEY  = "p6mRm2nJJEtpO8AY4";
 
