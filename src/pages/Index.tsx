@@ -10,6 +10,7 @@ import jardinetpiscine from "@/assets/jardinetpiscine.jpg";
 import renovationPiscine from "@/assets/renovationpiscine1.jpg";
 import GenieCivilPlancher1 from "@/assets/Genie-Civil-Plancher-1.jpg";
 import GenieCivilPlancher2 from "@/assets/Genie-Civil-Plancher-2.jpg";
+import SEO from "@/components/SEO";
 
 const Index = () => {
   const { t } = useLanguage();
@@ -39,7 +40,13 @@ const Index = () => {
   ];
 
   return (
+
     <Layout>
+       <SEO
+  title="Accueil"
+  description="Entreprise Générale de Bâtiment RH — Construction, rénovation et aménagement en Tunisie. Devis gratuit."
+  url="https://rh-building-showcase.vercel.app/"
+/>
       {/* Hero Section */}
       <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${heroImage})` }}>

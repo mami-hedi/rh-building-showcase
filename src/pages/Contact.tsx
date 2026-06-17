@@ -7,6 +7,7 @@ import { Phone, Mail, MapPin, Clock, Send } from "lucide-react";
 import Layout from "@/components/Layout";
 import { useLanguage } from "../i18n/LanguageContext";
 import emailjs from "@emailjs/browser";
+import SEO from "@/components/SEO";
 
 const EMAILJS_SERVICE_ID  = "service_387qb6z";
 const EMAILJS_TEMPLATE_ID = "template_yq9bgbs";
@@ -75,6 +76,11 @@ const Contact = () => {
 
   return (
     <Layout>
+      <SEO
+  title="Contact — Devis Gratuit"
+  description="Contactez l'Entreprise RH pour un devis gratuit. Avenue des Nations Unies, Hammamet. Tél: 98 30 89 69."
+  url="https://rh-building-showcase.vercel.app/contact"
+/>
       <section className="py-20 hero-gradient">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl animate-fade-up">

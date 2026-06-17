@@ -4,6 +4,7 @@ import { ArrowRight, Users, Target, Award, Lightbulb } from "lucide-react";
 import Layout from "@/components/Layout";
 import { useLanguage } from "../i18n/LanguageContext"; // Import du hook
 import projectCommercial from "@/assets/Genie-Civil-Plancher.jpg";
+import SEO from "@/components/SEO";
 
 const About = () => {
   const { t } = useLanguage();
@@ -18,6 +19,11 @@ const About = () => {
 
   return (
     <Layout>
+      <SEO
+  title="À Propos"
+  description="Fondée par Hichem Rassil, l'Entreprise Générale de Bâtiment RH accompagne ses clients dans tous leurs projets de construction en Tunisie."
+  url="https://rh-building-showcase.vercel.app/a-propos"
+/>
       {/* Hero Section */}
       <section className="py-20 hero-gradient">
         <div className="container mx-auto px-4">

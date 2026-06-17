@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Building2, Hammer, PaintBucket, Home, Wrench, HardHat, Ruler, Shield, ArrowRight, CheckCircle } from "lucide-react";
 import Layout from "@/components/Layout";
 import { useLanguage } from "../i18n/LanguageContext"; // Import du hook
+import SEO from "@/components/SEO";
 
 const Services = () => {
   const { t } = useLanguage();
@@ -20,7 +21,13 @@ const Services = () => {
   ];
 
   return (
+    
+
     <Layout>
+      <SEO
+  title="Nos Services"
+  description="Construction neuve, gros œuvre, rénovation, aménagement intérieur et conseil technique en Tunisie. Entreprise RH Hammamet."
+  url="https://rh-building-showcase.vercel.app/services"/>
       {/* Hero Section */}
       <section className="py-20 hero-gradient">
         <div className="container mx-auto px-4">

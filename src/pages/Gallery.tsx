@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, X, ChevronLeft, ChevronRight } from "lucide-react";
 import Layout from "@/components/Layout";
 import { useLanguage } from "../i18n/LanguageContext";
+import SEO from "@/components/SEO";
 
 import GenieCivilPlancher from "@/assets/Genie-Civil-Plancher.jpg";
 import GenieCivilPlancher1 from "@/assets/Genie-Civil-Plancher-1.jpg";
@@ -74,6 +75,11 @@ const Gallery = () => {
 
   return (
     <Layout>
+      <SEO
+  title="Galerie — Nos Réalisations"
+  description="Découvrez nos réalisations : arcatures, jardins, piscines, planchers, style arabe. Entreprise de bâtiment RH Tunisie."
+  url="https://rh-building-showcase.vercel.app/galerie"
+/>
       {/* Hero */}
       <section className="py-20 hero-gradient">
         <div className="container mx-auto px-4">
