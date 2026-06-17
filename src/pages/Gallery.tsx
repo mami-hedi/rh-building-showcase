@@ -1,126 +1,119 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, X } from "lucide-react";
+import { ArrowRight, X, ChevronLeft, ChevronRight } from "lucide-react";
 import Layout from "@/components/Layout";
+import { useLanguage } from "../i18n/LanguageContext";
+
 import GenieCivilPlancher from "@/assets/Genie-Civil-Plancher.jpg";
 import GenieCivilPlancher1 from "@/assets/Genie-Civil-Plancher-1.jpg";
+import GenieCivilPlancher3 from "@/assets/Genie-Civil-Plancher-3.jpg";
 import jardinetpiscine from "@/assets/jardinetpiscine.jpg";
 import jardinetpiscine1 from "@/assets/jardinetpiscine1.jpg";
+import jardinetpiscine2 from "@/assets/jardinetpiscine2.jpg";
 import stylearabe from "@/assets/Style-Arabe.jpg";
 import renovationPiscine from "@/assets/renovationPiscine.jpg";
 import renovationPiscine1 from "@/assets/renovationpiscine1.jpg";
 import Arcature from "@/assets/Arcature.jpg";
 import Arcature1 from "@/assets/arcature1.jpg";
+import Arcature2 from "@/assets/arcature2.jpg";
 
 const Gallery = () => {
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
-  const [activeCategory, setActiveCategory] = useState("Tous");
+  const { t } = useLanguage();
+  const [activeCategory, setActiveCategory] = useState("all");
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
-  const categories = ["Tous", "Arcature", "Jardin & Pisicne", "Travaux de plancher", "Style Arabe","Renovation Piscine"];
-
-  const projects = [
-    {
-      image: jardinetpiscine,
-      title: "Jardin & Pisicne",
-      category: "Jardin & Pisicne",
-      
-    },
-    {
-      image: jardinetpiscine1,
-      title: "Jardin & Pisicne",
-      category: "Jardin & Pisicne",
-      
-    },
-    {
-      image: GenieCivilPlancher,
-      title: "Travaux de plancher",
-      category: "Travaux de plancher",
-      
-    },
-    {
-      image: GenieCivilPlancher1,
-      title: "Travaux de plancher",
-      category: "Travaux de plancher",
-      
-    },
-    {
-      image: stylearabe,
-      title: "Style Arabe",
-      category: "Style Arabe",
-      
-    },
-    {
-      image: renovationPiscine,
-      title: "Renovation Piscine",
-      category: "Renovation Piscine",
-      
-    },
-    {
-      image: renovationPiscine1,
-      title: "Renovation Piscine",
-      category: "Renovation Piscine",
-      
-    },
-    {
-      image: Arcature,
-      title: "Arcature",
-      category: "Arcature",
-      
-    },
-    {
-      image: Arcature1,
-      title: "Arcature",
-      category: "Arcature",
-      
-    },
+  const categories = [
+    { id: "all", label: t.gallery.all },
+    { id: "arcature", label: "Arcature" },
+    { id: "garden", label: t.gallery.garden },
+    { id: "flooring", label: t.gallery.flooring },
+    { id: "arabian", label: t.gallery.arabian },
+    { id: "pool", label: t.gallery.pool },
   ];
 
-  const filteredProjects = activeCategory === "Tous" 
-    ? projects 
-    : projects.filter(p => p.category === activeCategory);
+  const projects = [
+    { image: jardinetpiscine, title: t.gallery.garden, category: "garden" },
+    { image: jardinetpiscine1, title: t.gallery.garden, category: "garden" },
+    { image: jardinetpiscine2, title: t.gallery.garden, category: "garden" },
+    { image: GenieCivilPlancher, title: t.gallery.flooring, category: "flooring" },
+    { image: GenieCivilPlancher1, title: t.gallery.flooring, category: "flooring" },
+    { image: GenieCivilPlancher3, title: t.gallery.flooring, category: "flooring" },
+    { image: stylearabe, title: "Style Arabe", category: "arabian" },
+    { image: renovationPiscine, title: t.gallery.pool, category: "pool" },
+    { image: renovationPiscine1, title: t.gallery.pool, category: "pool" },
+    { image: Arcature, title: "Arcature", category: "arcature" },
+    { image: Arcature1, title: "Arcature", category: "arcature" },
+    { image: Arcature2, title: "Arcature", category: "arcature" },
+  ];
+
+  const filteredProjects =
+    activeCategory === "all"
+      ? projects
+      : projects.filter((p) => p.category === activeCategory);
+
+  const openLightbox = (index: number) => setLightboxIndex(index);
+  const closeLightbox = () => setLightboxIndex(null);
+
+  const goPrev = () => {
+    if (lightboxIndex === null) return;
+    setLightboxIndex((lightboxIndex - 1 + filteredProjects.length) % filteredProjects.length);
+  };
+
+  const goNext = () => {
+    if (lightboxIndex === null) return;
+    setLightboxIndex((lightboxIndex + 1) % filteredProjects.length);
+  };
+
+  // keyboard navigation
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "ArrowLeft") goPrev();
+    if (e.key === "ArrowRight") goNext();
+    if (e.key === "Escape") closeLightbox();
+  };
 
   return (
     <Layout>
-      {/* Hero Section */}
+      {/* Hero */}
       <section className="py-20 hero-gradient">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl animate-fade-up">
             <span className="inline-block px-4 py-2 bg-accent/20 rounded-full text-accent font-medium text-sm mb-6">
-              Notre Galerie
+              {t.projects.badge}
             </span>
             <h1 className="text-4xl md:text-5xl font-heading font-bold text-primary-foreground leading-tight mb-6">
-              Nos réalisations
+              {t.projects.title}
             </h1>
-            <p className="text-lg text-primary-foreground/80">
-              Découvrez quelques-uns de nos projets les plus emblématiques. Chaque réalisation témoigne de notre savoir-faire et de notre engagement envers la qualité.
-            </p>
+            <p className="text-lg text-primary-foreground/80">{t.projects.subtitle}</p>
           </div>
         </div>
       </section>
 
-      {/* Filter */}
-<section className="py-8 bg-background border-b border-border static md:sticky top-20 z-40">
-  <div className="container mx-auto px-4">
-    <div className="flex flex-wrap gap-3 justify-center">
-      {categories.map((category) => (
-        <button
-          key={category}
-          onClick={() => setActiveCategory(category)}
-          className={`px-6 py-2 rounded-full font-medium transition-all duration-300 ${
-            activeCategory === category
-              ? "accent-gradient text-accent-foreground"
-              : "bg-muted text-muted-foreground hover:bg-muted/80"
-          }`}
-        >
-          {category}
-        </button>
-      ))}
-    </div>
-  </div>
-</section>
+      {/* Filtres */}
+      <section className="py-8 bg-background border-b border-border top-20 z-40">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-wrap gap-3 justify-center">
+            {categories.map((category) => (
+              <button
+                key={category.id}
+                onClick={() => {
+                  setActiveCategory(category.id);
+                  setLightboxIndex(null);
+                }}
+                className={`px-6 py-2 rounded-full font-medium transition-all duration-300 ${
+                  activeCategory === category.id
+                    ? "accent-gradient text-accent-foreground"
+                    : "bg-muted text-muted-foreground hover:bg-muted/80"
+                }`}
+              >
+                {category.label}
+              </button>
+            ))}
+          </div>
+        </div>
+      </section>
 
-      {/* Gallery Grid */}
+      {/* Grille */}
       <section className="py-16 bg-background">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -128,7 +121,7 @@ const Gallery = () => {
               <div
                 key={index}
                 className="group relative overflow-hidden rounded-xl cursor-pointer"
-                onClick={() => setSelectedImage(project.image)}
+                onClick={() => openLightbox(index)}
               >
                 <div className="aspect-[4/3]">
                   <img
@@ -145,9 +138,6 @@ const Gallery = () => {
                   <h3 className="text-xl font-heading font-bold text-primary-foreground">
                     {project.title}
                   </h3>
-                  <p className="text-primary-foreground/80 text-sm mt-1">
-                    {project.description}
-                  </p>
                 </div>
               </div>
             ))}
@@ -156,52 +146,78 @@ const Gallery = () => {
       </section>
 
       {/* Lightbox */}
-      {selectedImage && (
-        <div 
-          className="fixed inset-0 z-50 bg-primary/95 flex items-center justify-center p-4"
-          onClick={() => setSelectedImage(null)}
+      {lightboxIndex !== null && (
+        <div
+          className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center"
+          onClick={closeLightbox}
+          onKeyDown={handleKeyDown}
+          tabIndex={0}
         >
-          <button 
-            className="absolute top-6 right-6 text-primary-foreground hover:text-accent transition-colors"
-            onClick={() => setSelectedImage(null)}
+          {/* Fermer */}
+          <button
+            className="absolute top-4 right-4 z-10 p-2 bg-white/10 hover:bg-white/20 rounded-full text-white transition-colors"
+            onClick={closeLightbox}
           >
-            <X className="w-8 h-8" />
+            <X className="w-6 h-6" />
           </button>
-          <img
-            src={selectedImage}
-            alt="Project"
-            className="max-w-full max-h-[90vh] rounded-lg shadow-2xl"
+
+          {/* Compteur */}
+          <div className="absolute top-4 left-1/2 -translate-x-1/2 text-white/70 text-sm">
+            {lightboxIndex + 1} / {filteredProjects.length}
+          </div>
+
+          {/* Flèche précédent */}
+          <button
+            className="absolute left-4 z-10 p-3 bg-white/10 hover:bg-white/20 rounded-full text-white transition-colors"
+            onClick={(e) => { e.stopPropagation(); goPrev(); }}
+          >
+            <ChevronLeft className="w-7 h-7" />
+          </button>
+
+          {/* Image */}
+          <div
+            className="max-w-5xl max-h-[85vh] mx-16 flex items-center justify-center"
             onClick={(e) => e.stopPropagation()}
-          />
+          >
+            <img
+              src={filteredProjects[lightboxIndex].image}
+              alt={filteredProjects[lightboxIndex].title}
+              className="max-w-full max-h-[85vh] object-contain rounded-lg"
+            />
+          </div>
+
+          {/* Flèche suivant */}
+          <button
+            className="absolute right-4 z-10 p-3 bg-white/10 hover:bg-white/20 rounded-full text-white transition-colors"
+            onClick={(e) => { e.stopPropagation(); goNext(); }}
+          >
+            <ChevronRight className="w-7 h-7" />
+          </button>
+
+          {/* Titre */}
+          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white font-heading font-bold text-lg">
+            {filteredProjects[lightboxIndex].title}
+          </div>
         </div>
       )}
 
-      {/* CTA Section */}
+      {/* CTA */}
       <section className="py-20 bg-muted">
-  <div className="container mx-auto px-4 text-center">
-    <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-4">
-      Vous avez un projet similaire ?
-    </h2>
-    <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-      Contactez-nous pour discuter de votre projet. Nous vous accompagnerons de A à Z.
-    </p>
-    
-    {/* Harmonisation de la taille et sécurité anti-débordement mobile */}
-    <Button 
-      variant="accent" 
-      size="lg" 
-      className="md:scale-110 w-full sm:w-auto max-w-full h-auto py-3 px-4 sm:px-6 inline-flex items-center justify-center whitespace-normal text-center" 
-      asChild
-    >
-      <Link to="/contact/#devis">
-        <span className="text-sm sm:text-base md:text-lg font-semibold break-words">
-          Demander un devis gratuit
-        </span>
-        <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
-      </Link>
-    </Button>
-  </div>
-</section>
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-4">
+            {t.cta.title}
+          </h2>
+          <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+            {t.cta.subtitle}
+          </p>
+          <Button variant="accent" size="lg" asChild>
+            <Link to="/contact">
+              <span className="text-sm sm:text-base md:text-lg font-semibold">{t.cta.button}</span>
+              <ArrowRight className="ml-2 w-4 h-4" />
+            </Link>
+          </Button>
+        </div>
+      </section>
     </Layout>
   );
 };

@@ -5,8 +5,10 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { Phone, Mail, MapPin, Clock, Send } from "lucide-react";
 import Layout from "@/components/Layout";
+import { useLanguage } from "../i18n/LanguageContext"; // Import du hook
 
 const Contact = () => {
+  const { t } = useLanguage(); // Utilisation de l'objet de traduction
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
@@ -23,88 +25,54 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
     const emailBody = `
-Nom: ${formData.name}
-Email: ${formData.email}
-Téléphone: ${formData.phone}
-Sujet: ${formData.subject}
-
-Message:
-${formData.message}
+      Nom: ${formData.name}
+      Email: ${formData.email}
+      Téléphone: ${formData.phone}
+      Sujet: ${formData.subject}
+      Message: ${formData.message}
     `.trim();
     
     const mailtoLink = `mailto:entgbrh@gmail.com?subject=${encodeURIComponent(`Demande de devis - ${formData.subject}`)}&body=${encodeURIComponent(emailBody)}`;
-    
     window.location.href = mailtoLink;
     
     toast({
-      title: "Redirection vers votre messagerie",
-      description: "Votre client email va s'ouvrir pour envoyer le message.",
+      title: t.contact_page.sending, // Message traduit
+      description: "Votre client email va s'ouvrir.",
     });
   };
 
   const contactInfo = [
-    {
-      icon: Phone,
-      title: "Téléphone",
-      content: "98 30 89 69",
-      link: "tel:+21698308969",
-    },
-    {
-      icon: Phone, // Vous pouvez remplacer par MessageSquare ou une icône WhatsApp si disponible
-      title: "WhatsApp",
-      content: "55 30 81 16",
-      link: "https://wa.me/21655308116",
-    },
-    {
-      icon: Mail,
-      title: "Email",
-      content: "entgbrh@gmail.com",
-      link: "mailto:entgbrh@gmail.com",
-    },
-    {
-      icon: MapPin,
-      title: "Adresse",
-      content: "Avenue des Nations Unies, Hammamet - 8050",
-      link: "https://www.google.com/maps/search/?api=1&query=Avenue+des+Nations+Unies+Hammamet+8050",
-    },
-    {
-      icon: Clock,
-      title: "Horaires",
-      content: "Lun-Ven: 8h-18h",
-      link: null,
-    },
+    { icon: Phone, title: t.contact_page.phone, content: "98 30 89 69", link: "tel:+21698308969" },
+    { icon: Phone, title: "WhatsApp", content: "55 30 81 16", link: "https://wa.me/+21655308116" },
+    { icon: Mail, title: t.contact_page.email, content: "entgbrh@gmail.com", link: "mailto:entgbrh@gmail.com" },
+    { icon: MapPin, title: t.contact_page.address, content: "Avenue des Nations Unies, Hammamet - 8050", link: "https://www.google.com/maps/search/?api=1&query=Avenue+des+Nations+Unies+Hammamet+8050" },
+    { icon: Clock, title: t.contact_page.hours, content: t.contact_page.hours_value, link: null },
   ];
 
   return (
     <Layout>
-      {/* Hero Section */}
       <section className="py-20 hero-gradient">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl animate-fade-up">
             <span className="inline-block px-4 py-2 bg-accent/20 rounded-full text-accent font-medium text-sm mb-6">
-              Contact
+              {t.contact_page.badge}
             </span>
             <h1 className="text-4xl md:text-5xl font-heading font-bold text-primary-foreground leading-tight mb-6">
-              Parlons de votre projet
+              {t.contact_page.title}
             </h1>
             <p className="text-lg text-primary-foreground/80">
-              Vous avez un projet de construction ou de rénovation ? Contactez-nous pour obtenir un devis gratuit et sans engagement.
+              {t.contact_page.subtitle}
             </p>
           </div>
         </div>
       </section>
 
-      {/* Contact Section */}
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-            {/* Contact Info */}
             <div className="lg:col-span-1">
-              <h2 className="text-2xl font-heading font-bold text-foreground mb-8">
-                Nos coordonnées
-              </h2>
+              <h2 className="text-2xl font-heading font-bold text-foreground mb-8">{t.contact_page.coordinates}</h2>
               <div className="space-y-6">
                 {contactInfo.map((info, index) => (
                   <div key={index} className="flex items-start gap-4">
@@ -114,12 +82,7 @@ ${formData.message}
                     <div>
                       <p className="font-medium text-foreground">{info.title}</p>
                       {info.link ? (
-                        <a
-                          href={info.link}
-                          className="text-muted-foreground hover:text-accent transition-colors"
-                          target={info.link.startsWith("http") ? "_blank" : undefined}
-                          rel={info.link.startsWith("http") ? "noopener noreferrer" : undefined}
-                        >
+                        <a href={info.link} className="text-muted-foreground hover:text-accent transition-colors" target={info.link.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer">
                           {info.content}
                         </a>
                       ) : (
@@ -130,136 +93,44 @@ ${formData.message}
                 ))}
               </div>
 
-              
-             {/* Carte Google Maps intégrée */}
-<div className="mt-8 rounded-xl overflow-hidden border border-border h-64">
-  <iframe
-    src="https://maps.google.com/maps?q=CH4M%2B8XV%2C+Hammamet+Sud&output=embed"
-    width="100%"
-    height="100%"
-    style={{ border: 0 }}
-    allowFullScreen
-    loading="lazy"
-    referrerPolicy="no-referrer-when-downgrade"
-    title="Localisation Entreprise Générale de Bâtiment RH"
-  />
-</div>
+              <div className="mt-8 rounded-xl overflow-hidden border border-border h-64">
+                <iframe src="https://maps.google.com/maps?q=CH4M%2B8XV%2C+Hammamet+Sud&output=embed" width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" title="Map" />
+              </div>
+              <a href="https://www.google.com/maps/search/?api=1&query=CH4M%2B8XV+Hammamet+Sud" target="_blank" rel="noopener noreferrer" className="mt-3 inline-flex items-center gap-2 text-accent hover:underline font-medium">
+                <MapPin className="w-4 h-4" /> {t.contact_page.open_maps}
+              </a>
+            </div>
 
-  <a href="https://www.google.com/maps/search/?api=1&query=CH4M%2B8XV+Hammamet+Sud"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="mt-3 inline-flex items-center gap-2 text-accent hover:underline font-medium"
->
-  <MapPin className="w-4 h-4" />
-  Ouvrir dans Google Maps
-</a>
-</div>
-
-            {/* Contact Form */}
-            <div className="lg:col-span-2" id="devis">
+            <div className="lg:col-span-2">
               <div className="bg-card rounded-xl p-8 card-shadow border border-border">
-                <h2 className="text-2xl font-heading font-bold text-foreground mb-2">
-                  Demande de devis gratuit
-                </h2>
-                <p className="text-muted-foreground mb-8">
-                  Remplissez le formulaire ci-dessous et nous vous répondrons sous 24h.
-                </p>
+                <h2 className="text-2xl font-heading font-bold text-foreground mb-2">{t.contact_page.form_title}</h2>
+                <p className="text-muted-foreground mb-8">{t.contact_page.form_subtitle}</p>
 
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
-                        Nom complet *
-                      </label>
-                      <Input
-                        id="name"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        placeholder="Jean Dupont"
-                        required
-                        className="h-12"
-                      />
+                      <label className="block text-sm font-medium text-foreground mb-2">{t.contact_page.name} *</label>
+                      <Input name="name" value={formData.name} onChange={handleChange} required className="h-12" />
                     </div>
                     <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
-                        Email *
-                      </label>
-                      <Input
-                        id="email"
-                        name="email"
-                        type="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        placeholder="jean.dupont@email.com"
-                        required
-                        className="h-12"
-                      />
+                      <label className="block text-sm font-medium text-foreground mb-2">{t.contact_page.email} *</label>
+                      <Input name="email" type="email" value={formData.email} onChange={handleChange} required className="h-12" />
                     </div>
                   </div>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                      <label htmlFor="phone" className="block text-sm font-medium text-foreground mb-2">
-                        Téléphone
-                      </label>
-                      <Input
-                        id="phone"
-                        name="phone"
-                        type="tel"
-                        value={formData.phone}
-                        onChange={handleChange}
-                        placeholder="06 12 34 56 78"
-                        className="h-12"
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="subject" className="block text-sm font-medium text-foreground mb-2">
-                        Sujet *
-                      </label>
-                      <Input
-                        id="subject"
-                        name="subject"
-                        value={formData.subject}
-                        onChange={handleChange}
-                        placeholder="Construction maison individuelle"
-                        required
-                        className="h-12"
-                      />
-                    </div>
-                  </div>
-
                   <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
-                      Message *
-                    </label>
-                    <Textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      placeholder="Décrivez votre projet en quelques mots..."
-                      required
-                      rows={6}
-                      className="resize-none"
-                    />
+                    <label className="block text-sm font-medium text-foreground mb-2">{t.contact_page.phone_label}</label>
+                    <Input name="phone" type="tel" value={formData.phone} onChange={handleChange} className="h-12" />
                   </div>
-
-                  <Button
-                    type="submit"
-                    variant="accent"
-                    size="lg"
-                    disabled={isSubmitting}
-                    className="w-full md:w-auto"
-                  >
-                    {isSubmitting ? (
-                      "Envoi en cours..."
-                    ) : (
-                      <>
-                        Envoyer ma demande
-                        <Send className="ml-2 w-4 h-4" />
-                      </>
-                    )}
+                  <div>
+                    <label className="block text-sm font-medium text-foreground mb-2">{t.contact_page.subject} *</label>
+                    <Input name="subject" value={formData.subject} onChange={handleChange} required className="h-12" />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-foreground mb-2">{t.contact_page.message} *</label>
+                    <Textarea name="message" value={formData.message} onChange={handleChange} required rows={6} className="resize-none" placeholder={t.contact_page.message_placeholder} />
+                  </div>
+                  <Button type="submit" variant="accent" size="lg" disabled={isSubmitting} className="w-full md:w-auto">
+                    {isSubmitting ? t.contact_page.sending : <>{t.contact_page.send} <Send className="ml-2 w-4 h-4" /></>}
                   </Button>
                 </form>
               </div>
@@ -268,35 +139,14 @@ ${formData.message}
         </div>
       </section>
 
-      {/* FAQ Section */}
       <section className="py-20 bg-muted">
         <div className="container mx-auto px-4">
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <h2 className="text-3xl font-heading font-bold text-foreground mb-4">
-              Questions fréquentes
-            </h2>
-          </div>
-
+          <h2 className="text-3xl font-heading font-bold text-foreground mb-12 text-center">{t.contact_page.faq_title}</h2>
           <div className="max-w-3xl mx-auto space-y-4">
-            {[
-              {
-                question: "Comment obtenir un devis ?",
-                answer: "Remplissez le formulaire ci-dessus ou appelez-nous directement. Nous vous répondrons sous 24h avec une première estimation.",
-              },
-              {
-                question: "Quels sont vos délais d'intervention ?",
-                answer: "Les délais varient selon la nature et l'ampleur du projet. Nous vous communiquerons un planning précis lors de l'étude de votre dossier.",
-              },
-              {
-                question: "Proposez-vous des facilités de paiement ?",
-                answer: "Oui, nous proposons un échelonnement des paiements selon l'avancement des travaux. Les modalités sont définies dans le devis.",
-              },
-            ].map((faq, index) => (
+            {t.contact_page.faqs.map((faq, index) => (
               <div key={index} className="bg-card rounded-xl p-6 card-shadow">
-                <h3 className="font-heading font-bold text-foreground mb-2">
-                  {faq.question}
-                </h3>
-                <p className="text-muted-foreground">{faq.answer}</p>
+                <h3 className="font-heading font-bold text-foreground mb-2">{faq.q}</h3>
+                <p className="text-muted-foreground">{faq.a}</p>
               </div>
             ))}
           </div>
