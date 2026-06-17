@@ -4,8 +4,9 @@ import { Building2, Hammer, PaintBucket, Home, Wrench, HardHat, ArrowRight, Chec
 import Layout from "@/components/Layout";
 import heroImage from "@/assets/hero-construction.jpg";
 import jardinetpiscine from "@/assets/jardinetpiscine.jpg";
-import renovationPiscine from "@/assets/renovationPiscine.jpg";
+import renovationPiscine from "@/assets/renovationpiscine1.jpg";
 import GenieCivilPlancher1 from "@/assets/Genie-Civil-Plancher-1.jpg";
+import GenieCivilPlancher2 from "@/assets/Genie-Civil-Plancher-2.jpg";
 
 const Index = () => {
   const services = [
@@ -220,8 +221,8 @@ const Index = () => {
                 L'excellence au service de vos projets
               </h2>
               <p className="text-muted-foreground text-lg mb-8 leading-relaxed">
-                Depuis plus de 20 ans, nous mettons notre expertise et notre passion au service de vos projets de construction et de rénovation.
-              </p>
+  Forts d'une solide expertise, nous mettons notre savoir-faire et notre passion au service de vos projets de construction et de rénovation.
+</p>
               
               <ul className="space-y-4">
                 {[
@@ -245,7 +246,7 @@ const Index = () => {
 
             <div className="relative">
               <img
-                src={renovationPiscine}
+                src={GenieCivilPlancher2}
                 alt="Notre expertise"
                 className="rounded-xl shadow-2xl"
               />

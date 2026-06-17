@@ -11,7 +11,7 @@ import stylearabe from "@/assets/Style-Arabe.jpg";
 import renovationPiscine from "@/assets/renovationPiscine.jpg";
 import renovationPiscine1 from "@/assets/renovationpiscine1.jpg";
 import Arcature from "@/assets/Arcature.jpg";
-import Arcature1 from "@/assets/arcature1.jpeg";
+import Arcature1 from "@/assets/arcature1.jpg";
 
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);

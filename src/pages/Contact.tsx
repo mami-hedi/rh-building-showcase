@@ -130,19 +130,30 @@ ${formData.message}
                 ))}
               </div>
 
-              {/* Map placeholder */}
-              <a 
-  href="https://www.google.com/maps/search/?api=1&query=Avenue+des+Nations+Unies,+Hammamet+8050" 
-  target="_blank" 
+              
+             {/* Carte Google Maps intégrée */}
+<div className="mt-8 rounded-xl overflow-hidden border border-border h-64">
+  <iframe
+    src="https://maps.google.com/maps?q=CH4M%2B8XV%2C+Hammamet+Sud&output=embed"
+    width="100%"
+    height="100%"
+    style={{ border: 0 }}
+    allowFullScreen
+    loading="lazy"
+    referrerPolicy="no-referrer-when-downgrade"
+    title="Localisation Entreprise Générale de Bâtiment RH"
+  />
+</div>
+
+  <a href="https://www.google.com/maps/search/?api=1&query=CH4M%2B8XV+Hammamet+Sud"
+  target="_blank"
   rel="noopener noreferrer"
-  className="mt-8 block bg-accent/10 hover:bg-accent/20 transition-colors rounded-xl h-48 flex items-center justify-center border-2 border-dashed border-accent/30"
+  className="mt-3 inline-flex items-center gap-2 text-accent hover:underline font-medium"
 >
-  <div className="flex flex-col items-center gap-2">
-    <MapPin className="w-12 h-12 text-accent" />
-    <span className="font-medium text-accent">Voir sur Google Maps</span>
-  </div>
+  <MapPin className="w-4 h-4" />
+  Ouvrir dans Google Maps
 </a>
-            </div>
+</div>
 
             {/* Contact Form */}
             <div className="lg:col-span-2">
