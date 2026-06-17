@@ -268,21 +268,31 @@ const Index = () => {
 
       {/* CTA Section */}
       <section className="py-20 hero-gradient">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary-foreground mb-4">
-            Prêt à démarrer votre projet ?
-          </h2>
-          <p className="text-lg text-primary-foreground/80 mb-8 max-w-2xl mx-auto">
-            Contactez-nous dès aujourd'hui pour discuter de votre projet et obtenir un devis gratuit sans engagement.
-          </p>
-          <Button variant="hero" size="xl" asChild>
-            <Link to="/contact">
-              Demander un devis gratuit
-              <ArrowRight className="ml-2 w-5 h-5" />
-            </Link>
-          </Button>
-        </div>
-      </section>
+  <div className="container mx-auto px-4 text-center">
+    <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary-foreground mb-4">
+      Prêt à démarrer votre projet ?
+    </h2>
+    <p className="text-lg text-primary-foreground/80 mb-8 max-w-2xl mx-auto">
+      Contactez-nous dès aujourd'hui pour discuter de votre projet et obtenir un devis gratuit sans engagement.
+    </p>
+    
+    {/* Ajustements : max-w-full pour ne jamais déborder, taille xl uniquement à partir de md */}
+    <Button 
+      variant="hero" 
+      size="lg" 
+      className="md:scale-110 w-full sm:w-auto max-w-full h-auto py-3 px-4 sm:px-6 inline-flex items-center justify-center whitespace-normal text-center" 
+      asChild
+    >
+      <Link to="/contact">
+        {/* Le texte passe à la ligne proprement sur les très petits écrans si nécessaire */}
+        <span className="text-sm sm:text-base md:text-lg font-semibold break-words">
+          Demander un devis gratuit
+        </span>
+        <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
+      </Link>
+    </Button>
+  </div>
+</section>
     </Layout>
   );
 };
