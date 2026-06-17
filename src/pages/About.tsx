@@ -25,7 +25,7 @@ const About = () => {
               Expertise au service du bâtiment
             </h1>
             <p className="text-lg text-primary-foreground/80">
-              Entreprise Générale de Bâtiment RH est une structure dynamique qui accompagne de A à Z ses clients dans leurs projets de rénovation et de construction en Tunisie.
+              <b>Entreprise Générale de Bâtiment RH</b> est une structure dynamique qui accompagne de A à Z ses clients dans leurs projets de rénovation et de construction en Tunisie.
             </p>
           </div>
         </div>
@@ -44,7 +44,7 @@ const About = () => {
               </h2>
               <div className="space-y-4 text-muted-foreground leading-relaxed">
                 <p>
-                  Fondée par Hichem Rassil, Entreprise Générale de Bâtiment RH est née de la volonté d'apporter une approche rigoureuse et novatrice au secteur du bâtiment.
+                  Fondée par Hichem Rassil, <b>Entreprise Générale de Bâtiment RH</b> est née de la volonté d'apporter une approche rigoureuse et novatrice au secteur du bâtiment.
                 </p>
                 <p>
                   Sous l'impulsion de son fondateur, notre entreprise s'est structurée pour offrir une expertise technique pointue, plaçant la satisfaction client et le respect des engagements au cœur de chaque intervention.
